@@ -1,8 +1,8 @@
-# Проект: Место
+# Проект: Место (реакт)
 
 ### Сайт
 
-https://arbuznik.github.io/mesto/
+http://arbuznik.github.io/mesto-react/
 
 ### About
 
