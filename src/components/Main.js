@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import api from '../utils/api.js';
+import Card from './Card.js';
 
 function Main(props) {
 
   const [userName, setUserName] = useState('');
   const [userDescription, setUserDescription] = useState('');
   const [userAvatar, setUserAvatar] = useState('');
+  const [cards, setCards] = useState([]);
 
   useEffect(() => {
     api.getUserInfo()
@@ -15,7 +17,11 @@ function Main(props) {
         setUserAvatar(userData.avatar);
       })
       .catch(api.handleApiError);
-  })
+
+    api.getInitialCards()
+      .then(cards => { setCards(cards) })
+      .catch(api.handleApiError);
+  }, [])
 
   return (
     <main className="main page__main">
@@ -34,7 +40,9 @@ function Main(props) {
       </section>
 
       <section className="places page__places">
-
+        {cards.map(card => {
+          return <Card key={card._id} name={card.name} link={card.link} likes={card.likes.length} onCardClick={props.onCardClick}/>
+        })}
       </section>
     </main>
   )

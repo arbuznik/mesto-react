@@ -3,12 +3,18 @@ import Main from './Main.js';
 import Footer from './Footer.js';
 import { useState } from 'react';
 import PopupWithForm from './PopupWithForm.js';
+import ImagePopup from './ImagePopup.js';
 
 function App() {
   const [isEditProfilePopupOpen, setEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = useState(false);
   const [isDeleteCardPopupOpen, setDeleteCardPopupOpen] = useState(false);
+  const [selectedCard, setSelectedCard] = useState('');
+
+  function handleCardClick(card) {
+    setSelectedCard(card)
+  }
 
   function handleEditProfileClick() {
     setEditProfilePopupOpen(true);
@@ -27,13 +33,16 @@ function App() {
     setAddPlacePopupOpen(false);
     setEditAvatarPopupOpen(false);
     setDeleteCardPopupOpen(false);
+    setSelectedCard('');
   }
 
   return (
       <div className='page'>
         <Header />
-        <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick} />
+        <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick} onCardClick={handleCardClick}/>
         <Footer />
+        <ImagePopup card={selectedCard} onClose={closeAllPopups} />
+
         <PopupWithForm name={'edit'} title={'Редактировать профиль'} isOpen={isEditProfilePopupOpen} onClose={closeAllPopups}>
           <fieldset className="form__input-container">
             <input type="text" className="form__input form__input_type_name" id="user-name-input" name="name" placeholder="Имя" minLength="2" maxLength="40" required />
@@ -43,6 +52,7 @@ function App() {
           </fieldset>
           <button type="submit" className="form__save-button popup__save-button" aria-label="Сохранить" title="Сохранить">Сохранить</button>
         </PopupWithForm>
+
         <PopupWithForm name={'add'} title={'Новое место'} isOpen={isAddPlacePopupOpen} onClose={closeAllPopups}>
           <fieldset className="form__input-container">
             <input type="text" className="form__input form__input_type_place-name" id="place-name-input" name="name" placeholder="Название" minLength="2" maxLength="30" required />
@@ -52,6 +62,7 @@ function App() {
           </fieldset>
           <button type="submit" className="form__save-button popup__save-button" aria-label="Создать" title="Создать">Создать</button>
         </PopupWithForm>
+
         <PopupWithForm name={'edit-avatar'} title={'Обновить аватар'} isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups}>
           <fieldset className="form__input-container">
             <input type="text" className="form__input form__input_type_place-name" id="place-name-input" name="name" placeholder="Название" minLength="2" maxLength="30" required />
@@ -61,23 +72,13 @@ function App() {
           </fieldset>
           <button type="submit" className="form__save-button popup__save-button" aria-label="Создать" title="Создать">Создать</button>
         </PopupWithForm>
+        
         <PopupWithForm name={'delete'} title={'Вы уверены?'} isOpen={isDeleteCardPopupOpen} onClose={closeAllPopups}>
           <fieldset className="form__input-container">
             <button type="submit" className="popup__save-button" aria-label="Да" title="Да">Да</button>
           </fieldset>
           <button type="submit" className="form__save-button popup__save-button" aria-label="Создать" title="Создать">Создать</button>
         </PopupWithForm>
-        <template id='place-template'>
-          <article className="place">
-            <img className="place__cover" />
-            <button type="button" className="place__delete-button" aria-label="Удалить" title="Удалить"></button>
-            <div className="place__content">
-              <h2 className="place__title"></h2>
-              <button type="button" className="place__like-button" aria-label="Лайк" title="Лайк"></button>
-              <p className="place__like-counter">12</p>
-            </div>
-          </article>
-        </template>
       </div>
   );
 }
