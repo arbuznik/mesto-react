@@ -32,11 +32,11 @@ function Main(props) {
         <div className="profile__content-wrapper">
           <div className="profile__title-wrapper">
             <h1 className="profile__title">{userName}</h1>
-            <button type="button" className="profile__edit-button" onClick={props.onEditProfile} aria-label="Редактировать профиль" title="Редактировать профиль"></button>
+            <button type="button" className="profile__edit-button" onClick={props.onEditProfile} aria-label="Редактировать профиль" title="Редактировать профиль"/>
           </div>
           <p className="profile__subtitle">{userDescription}</p>
         </div>
-        <button type="button" className="profile__add-button" onClick={props.onAddPlace} aria-label="Добавить карточку" title="Добавить карточку"></button>
+        <button type="button" className="profile__add-button" onClick={props.onAddPlace} aria-label="Добавить карточку" title="Добавить карточку"/>
       </section>
 
       <section className="places page__places">

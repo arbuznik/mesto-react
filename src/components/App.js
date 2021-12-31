@@ -45,23 +45,23 @@ function App() {
 
       <PopupWithForm name={'edit'} title={'Редактировать профиль'} buttonText={'Сохранить'} isOpen={isEditProfilePopupOpen} onClose={closeAllPopups}>
         <input type="text" className="form__input form__input_type_name" id="user-name-input" name="name" placeholder="Имя" minLength="2" maxLength="40" required />
-        <span className="form__input-error user-name-input-error"></span>
+        <span className="form__input-error user-name-input-error"/>
         <input type="text" className="form__input form__input_type_about" id="user-job-input" name="about" placeholder="О себе" minLength="2" maxLength="200" required />
-        <span className="form__input-error user-job-input-error"></span>
+        <span className="form__input-error user-job-input-error"/>
       </PopupWithForm>
 
       <PopupWithForm name={'add'} title={'Новое место'} buttonText={'Создать'} isOpen={isAddPlacePopupOpen} onClose={closeAllPopups}>
         <input type="text" className="form__input form__input_type_place-name" id="place-name-input" name="name" placeholder="Название" minLength="2" maxLength="30" required />
-        <span className="form__input-error place-name-input-error"></span>
+        <span className="form__input-error place-name-input-error"/>
         <input type="url" className="form__input form__input_type_place-link" id="place-link-input" name="link" placeholder="Ссылка на картинку" required />
-        <span className="form__input-error place-link-input-error"></span>
+        <span className="form__input-error place-link-input-error"/>
       </PopupWithForm>
 
       <PopupWithForm name={'edit-avatar'} title={'Обновить аватар'} buttonText={'Создать'} isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups}>
         <input type="text" className="form__input form__input_type_place-name" id="place-name-input" name="name" placeholder="Название" minLength="2" maxLength="30" required />
-        <span className="form__input-error place-name-input-error"></span>
+        <span className="form__input-error place-name-input-error"/>
         <input type="url" className="form__input form__input_type_place-link" id="place-link-input" name="link" placeholder="Ссылка на картинку" required />
-        <span className="form__input-error place-link-input-error"></span>
+        <span className="form__input-error place-link-input-error"/>
       </PopupWithForm>
 
       <PopupWithForm name={'delete'} title={'Вы уверены?'} buttonText={'Да'} isOpen={isDeleteCardPopupOpen} onClose={closeAllPopups} />
