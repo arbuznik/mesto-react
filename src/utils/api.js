@@ -79,6 +79,14 @@ class Api {
   handleApiError(err) {
     console.log(err);
   }
+
+  changeLikeCardStatus(cardId, isLikedByOwner) {
+    if (isLikedByOwner) {
+      return this.removeCardLike(cardId);
+    } else {
+      return this.addCardLike(cardId);
+    }
+  }
 }
 
 const api = new Api({
