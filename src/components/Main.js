@@ -22,7 +22,15 @@ function Main(props) {
         setCards(state => state.map(c => c._id === card._id ? newCard : c))
       })
       .catch(api.handleApiError)
-}
+  }
+
+  function handleCardDelete(card) {
+    api.deleteCard(card._id)
+      .then(_ => {
+        setCards(state => state.filter(c => c._id !== card._id))
+      })
+      .catch(api.handleApiError)
+  }
 
   return (
     <main className="main page__main">
@@ -42,7 +50,7 @@ function Main(props) {
 
       <section className="places page__places">
         {cards.map(card => {
-          return <Card key={card._id}  card={card} onCardClick={props.onCardClick} onLikeClick={handleLikeClick}/>
+          return <Card key={card._id}  card={card} onCardClick={props.onCardClick} onLikeClick={handleLikeClick} onDeleteClick={handleCardDelete}/>
         })}
       </section>
     </main>
