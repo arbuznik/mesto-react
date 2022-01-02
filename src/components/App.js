@@ -98,6 +98,12 @@ function App() {
       .catch(api.handleApiError);
   }
 
+  function handleOverlayClick(evt) {
+    if (evt.target.classList.contains('popup')) {
+      closeAllPopups();
+    }
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className='page'>
@@ -106,14 +112,18 @@ function App() {
               onEditAvatar={handleEditAvatarClick} onCardClick={handleCardClick} cards={cards}
               onLikeClick={handleLikeClick} onDeleteClick={handleCardDelete}/>
         <Footer/>
-        <ImagePopup card={selectedCard} onClose={closeAllPopups}/>
-        <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser}/>
-        <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddPlace={handleAddPlaceSubmit}/>
-        <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar}/>
-        <PopupWithForm name={'delete'} title={'Вы уверены?'} buttonText={'Да'} isOpen={isDeleteCardPopupOpen} onClose={closeAllPopups}/>
+        <ImagePopup card={selectedCard} onClose={closeAllPopups} onOverlayClick={handleOverlayClick}/>
+        <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} onOverlayClick={handleOverlayClick}/>
+        <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddPlace={handleAddPlaceSubmit} onOverlayClick={handleOverlayClick}/>
+        <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} onOverlayClick={handleOverlayClick}/>
+        <PopupWithForm name={'delete'} title={'Вы уверены?'} buttonText={'Да'} isOpen={isDeleteCardPopupOpen} onClose={closeAllPopups} onOverlayClick={handleOverlayClick}/>
       </div>
     </CurrentUserContext.Provider>
   );
 }
 
 export default App;
+
+// TODO: form validation
+// TODO: delete confirmation popup
+// TODO: handle popup close on ESC

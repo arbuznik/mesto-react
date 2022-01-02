@@ -14,7 +14,7 @@ export function AddPlacePopup(props) {
   }
 
   return (
-    <PopupWithForm name={"add"} title={"Новое место"} buttonText={"Создать"} isOpen={props.isOpen} onClose={props.onClose} onSubmit={handleFormSubmit} onChange={handleInputChange}>
+    <PopupWithForm name={"add"} title={"Новое место"} buttonText={"Создать"} isOpen={props.isOpen} onClose={props.onClose} onSubmit={handleFormSubmit} onChange={handleInputChange} onOverlayClick={props.onOverlayClick}>
       <input type="text" className="form__input form__input_type_place-name" id="place-name-input" name="name" placeholder="Название" minLength="2" maxLength="30" onChange={handleInputChange} required/>
       <span className="form__input-error place-name-input-error"/>
       <input type="url" className="form__input form__input_type_place-link" id="place-link-input" name="link" placeholder="Ссылка на картинку" onChange={handleInputChange} required/>

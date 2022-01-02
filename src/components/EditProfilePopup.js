@@ -21,7 +21,7 @@ export function EditProfilePopup(props) {
 
   return (
     <PopupWithForm name={"edit"} title={"Редактировать профиль"} buttonText={"Сохранить"} isOpen={props.isOpen}
-                   onClose={props.onClose} onSubmit={handleFormSubmit}>
+                   onClose={props.onClose} onSubmit={handleFormSubmit} onOverlayClick={props.onOverlayClick}>
       <input type="text" value={userInfo.name || ''} onChange={handleInputChange} className="form__input form__input_type_name" id="user-name-input" name="name" placeholder="Имя"
              minLength="2" maxLength="40" required/>
       <span className="form__input-error user-name-input-error"/>
