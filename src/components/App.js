@@ -27,6 +27,18 @@ function App() {
     api.getInitialCards()
       .then(cards => setCards(cards))
       .catch(api.handleApiError);
+
+    function handleEscPress(evt) {
+      if (evt.key === 'Escape') {
+        closeAllPopups();
+      }
+    }
+
+    document.addEventListener('keydown', handleEscPress);
+
+    return () => {
+      document.removeEventListener('keydown', handleEscPress);
+    }
   }, [])
 
   function handleLikeClick(card) {
@@ -127,4 +139,3 @@ export default App;
 // TODO: form validation
 // TODO: loading state for popup buttons
 // TODO: delete confirmation popup
-// TODO: handle popup close on ESC
