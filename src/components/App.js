@@ -125,5 +125,6 @@ function App() {
 export default App;
 
 // TODO: form validation
+// TODO: loading state for popup buttons
 // TODO: delete confirmation popup
 // TODO: handle popup close on ESC
