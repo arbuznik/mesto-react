@@ -8,7 +8,7 @@ export function EditProfilePopup(props) {
 
   useEffect(() => {
     setUserInfo({name: currentUser.name, about: currentUser.about});
-  }, [currentUser]);
+  }, [currentUser, props.isOpen]);
 
   function handleInputChange(evt) {
     setUserInfo({...userInfo, [evt.target.name]: evt.target.value});
