@@ -6,5 +6,5 @@ export function DeleteConfirmationPopup(props) {
     props.onDeleteClick();
   }
 
-  return <PopupWithForm name={"delete"} title={"Вы уверены?"} buttonText={"Да"} isOpen={props.isOpen} onClose={props.onClose} onOverlayClick={props.onOverlayClick} onSubmit={handleFormSubmit}/>;
+  return <PopupWithForm name={"delete"} title={"Вы уверены?"} buttonText={props.isLoading ? 'Удаляется...' : 'Да'} isOpen={props.isOpen} onClose={props.onClose} onOverlayClick={props.onOverlayClick} onSubmit={handleFormSubmit}/>;
 }
